@@ -180,6 +180,7 @@ void server::add_redirect(const std::string& requested_resource,
     boost::mutex::scoped_lock resource_lock(m_resource_mutex);
     const std::string clean_requested_resource(strip_trailing_slash(requested_resource));
     const std::string clean_new_resource(strip_trailing_slash(new_resource));
+    m_redirects.erase(clean_requested_resource);
     m_redirects.insert(std::make_pair(clean_requested_resource, clean_new_resource));
     PION_LOG_INFO(m_logger, "Added redirection for HTTP resource " << clean_requested_resource << " to resource " << clean_new_resource);
 }
