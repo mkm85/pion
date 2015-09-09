@@ -36,7 +36,7 @@ class request_reader :
 public:
 
     /// function called after the HTTP message has been parsed
-    typedef boost::function3<void, http::request_ptr, tcp::connection_ptr,
+    typedef boost::function3<void, http::request_ptr&, tcp::connection_ptr&,
         const boost::system::error_code&>   finished_handler_t;
 
     
